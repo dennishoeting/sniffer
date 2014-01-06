@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<title>Sniffer</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<link rel='stylesheet' type='text/css' href='styles.css' id='styles' />
+		<link rel='stylesheet' type='text/css' href='plugins/nyroModal/styles/nyroModal.css' media='screen' />
+		<script type='text/javascript' src='plugins/jsonParser/json2.js'></script>
+		<script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true'></script>
+		<script type='text/javascript' src='http://code.google.com/apis/gears/gears_init.js'></script>
+		<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js'></script>
+		<script type='text/javascript' src='plugins/nyroModal/js/jquery.nyroModal-1.6.2.pack.js'></script>
+	</head>
+	<body>
+		<div id='print'>
+			<img id='printImg' onClick='javascript:switchPrintVersion();' src='img/printOn.png' />
+		</div>
+		<div id='status'>Status unbekannt</div>
+		<div id='container'>
+			<div id='head'>
+			</div>
+			<div id='write'>
+				<form name='writeForm'>
+					Name:<br />
+					<input name='name' type='text' maxlength='30' size='30' onblur="sendNameToServer();" />
+					<textarea name='text' onKeyDown='textLeftCounter();' onKeyUp='textLeftCounter();'></textarea>
+					<input name='position' type='hidden'></input> 
+					<div class='box' id='doItButton' onClick="javascript:sendMessage();">do it!</div>
+				</form>
+				<div id='charsLeft'>
+					<span id='counter' class='box'>
+						<script language='JavaScript'><!--
+							document.write(150 - document.writeForm.text.value.length);
+						--></script>
+					</span>
+				</div>
+			</div>
+			<div id='read'>
+				<div id='sniffRatio' class='box'>
+					&nbsp;&nbsp;&nbsp;&nbsp;Radius: 
+				</div>
+				<form action='index.html'>
+					<select name='sniffRatio' id='sniffRatioBox' size='1'>
+						<option value='100'>100 m</option>
+						<option value='500'>500 m</option>
+						<option value='1000'>1 km</option>
+						<option value='2500'>2,5 km</option>
+						<option value='10000'>10 km</option>
+						<option value='50000'>50 km</option>
+						<option value='500000'>500 km</option>
+						<option value='-1000'>Welt</option>
+					</select>
+				</form>
+				<div id='yourPosition' class='box'>
+					<b style='font-size: 15px;'>Position: </b><span id='position'></span>
+				</div>
+				<div id='showMap' class='box' onClick='javascript:openPopUpWithAllMarkers("mapCanvas");'>
+        			Karte anzeigen
+       			</div>
+       			<div id='usersOnline' class='box' onClick='javascript:getUsersOnline();'>
+       				<!-- Für online-users -->
+       			</div>
+				<div id='newSmell' class='box' onClick='javascript:makeVisible();'>
+					<!-- Die "x neue Nachrichte(n)"-Anzeige -->
+				</div>
+				<div id='sniffs'>
+					<!-- Die Sniff-Einträge aus WebSocket -->
+					<div class='sniff' id='noSniffSniff'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Bisher nichts gesnifft</i></div>
+				</div>
+				<div id='moreSniffs' class='box' onClick='javascript:showMoreSniffs();'> 
+					<!-- Die "mehr"-Anzeige -->
+					mehr
+				</div>
+				
+				<img id='radarImg' src='img/radarKlein.png' />
+				<img id='pfeilImg' src='img/pfeilKlein.png' />
+				<img id='weltImg' src='img/weltKlein.png' />
+				<img id='playerImg' src='img/playerKlein.png' />
+				<img id='pfoteImg' src='img/pfoteKlein.png' />
+			</div>
+		</div>
+    <div id='mapCanvas'  style="z-index: 10"></div>
+    <div id='userOnlineCanvas'>
+    	<table width='600'>
+    		<tr>
+    			<td id='userOnlineMap' width='400' rowspan='2'>
+    				<div id='userOnlineMapCanvas'  style='z-index: 10'></div>
+    			</td>
+    			<td id='userOnlineList' width='200' >
+    				<div style="z-index: 10">
+		    		<form name='userListForm'>
+						<select id='usersOnlineList' size='15' style='width:200px' name='listSelect'></select>
+					</form>
+					</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td id='chat' >
+    				<form name='chat'>
+	    				Nachricht an <span id='chatUserName'>?</span>: 
+	    				<textarea name='text' disabled></textarea>
+					<div id='ChatButton' onClick="javascript:sendChat();">&nbsp;do it private!</div>
+    				</form>
+    			</td>
+    		</tr>
+    	</table>
+    </div>
+    <div id='printContainer'>
+    	<h1>Sniffer-Druckversion</h1>
+    	<!-- Hier jetzt mit HTML5-Groups userData und Sniffs -->
+    	<fieldset id='printUserData'>
+    		<legend>Userdaten</legend>
+			<div>Dein Name: <b id='printName'></b></div>
+			<div>Deine Position: <b id='printPosition'></b></div>
+			<div>Datum: <b id='printDatum'></b></div>
+			<div>Uhrzeit: <b id='printZeit'></b></div>
+		</fieldset>
+    	<fieldset id='printSniffs'>
+    		<legend>Sniffs</legend>
+		</fieldset>
+    </div>
+	<script type='text/javascript' src='script.js'></script>
+	<script type='text/javascript' src='geoLocation.js'></script>
+	<script type='text/javascript' src='webSocket.js'></script>
+	</body>
+</html>

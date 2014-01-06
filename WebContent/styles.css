@@ -1,0 +1,431 @@
+@media screen, handheld {
+	body {
+		background-color: #FFF;
+		font-family: Calibri;
+		font-size: 13px;
+		text-align: center;
+	}
+	
+	.box {
+		background-color: #f0c859;
+		border: solid 1px #444;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		font-size: 15px;
+		font-weight: bold;
+		color: #111;
+	}
+	
+	#print {
+		position: absolute;
+		text-align: right;
+		width: 95%;
+		cursor: pointer;
+	}
+
+	#container {
+		width: 800px;
+		margin: 0px auto;
+	}
+
+	#head {
+		height: 150px;
+		padding: 5px;
+		background-image: url(img/headLogo.JPG);
+		background-repeat: no-repeat;
+		background-position: 350px;
+		text-align: right;
+		padding-right: 50px;
+		font-size: 45pt;
+		font-weight: bold;
+		font-family: arial;
+	}
+
+	#write {
+		position: relative;
+		top: -150px;
+		text-align: left;
+		padding: 15px;
+		border: 1px #676767 solid;
+		background-color: #fff697;
+		height: 120px;
+		width: 300px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		font-weight: bold;
+		background-image: url(img/writeHead.JPG);
+		background-repeat: no-repeat;
+	}
+
+	#charsLeft {
+		position: relative;
+		left: 80;
+		bottom: 135;
+		font-size: 16px;
+		text-align: center;
+	}
+
+	#counter {
+		padding: 2px;
+	}
+
+	#write input[type="text"] {
+		width: 210px;
+		background-color: #fff;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	#write textarea {
+		position: relative;
+		top: 5;
+		width: 250px;
+		height: 75px;
+		background-color: #fff;
+		margin: 0 auto;
+		resize: none;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		padding: 5px;
+	}
+
+	#doItButton {
+		position: relative;
+		left: 255;
+		top: -25;
+		width: 32px;
+		padding: 5;
+		font-size: small;
+		color: #000;
+		cursor: pointer;
+	}
+
+	#read {
+		position: relative;
+		top: -150px;
+		text-align: left;
+		margin-top: 5px;
+		padding: 12px;
+		border: 1px #676767 solid;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		background-color: #fff697;
+	}
+	
+			
+	#radarImg {
+		position: absolute;
+		left: 0px;
+		top: 5px;
+		z-index: 0;
+	}
+	
+	#pfeilImg {
+		position: absolute;
+		left: 180px;
+		top: 5px;
+		z-index: 0;
+	}
+	
+	#weltImg {
+		position: absolute;
+		top: 50px;
+		left: 0px;
+		z-index: 0;
+	}
+	
+	#playerImg {
+		position: absolute;
+		top: 50px;
+		left: 180px;
+		z-index: 0;
+	}
+	
+	#yourPosition {
+		position:relative;
+		bottom:38px;
+		left: 170px;
+		padding: 5px;
+		width: 575px;
+		color: #111;
+		padding-left: 18px;
+	}
+	
+	#position {
+		font-weight: normal;
+	}
+	
+	#sniffRatio {
+		position: absolute;
+		float: left;
+		padding: 5px;
+		width: 135px;
+		padding: 5px;
+	}
+	
+	#read select {
+		position: relative;
+		left: 65px;
+		top: 5px;
+		background-color: #EEE;
+		cursor: pointer;
+	}
+	
+	#showMap {
+		float:left;
+		position: relative;
+		top: -20px;
+		padding: 5px;
+		height: 20px;
+		width: 135px;
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	#usersOnline {
+		float:left;
+		position: relative;
+		bottom: 20px;
+		left: 23px;
+		padding: 5px;
+		height: 20px;
+		width: 120px;
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	#mapCanvas {
+	  	visibility: hidden;
+    	position:absolute;
+    	top:50%;
+    	left:50%;
+    	margin-top:-200px;
+    	margin-left:-200px;
+    	width:400px;
+    	height:400px;
+  	}
+  	
+  	#usersOnlineList {
+  		background-color: #FFF;
+  		overflow: inherit;
+  	}
+  	
+  	#userOnlineCanvas {
+  		visibility: hidden;
+    	position:absolute;
+    	top:50%;
+    	left:50%;
+    	margin-top:-200px;
+    	margin-left:-300px;
+    	width:600px;
+    	height:400px;
+  	}
+	
+	#userOnlineMapCanvas {
+    	width:400px;
+    	height:368px;
+  	}
+  	
+  	#mapBackground {
+  		visibility: hidden; 
+  		position:absolute; 
+  		background-color:#999; 
+  		top:0; 
+  		left:0; 
+  		width:100%; 
+  		height:100%; 
+  		filter:alpha(opacity=50); 
+  		-khtml-opacity:0.5; 
+  		-moz-opacity:0.5; 
+  		opacity:0.5;
+  		z-index: 0;
+  	}
+  	
+	#mapFrame {
+		visibility: hidden; 
+		position:absolute; 
+		background-color:#fff; 
+		top:50%; 
+		left:50%; 
+		margin-top:-212px; 
+		margin-left:-212px; 
+		width:424px; 
+		height:424px;
+		z-index: 0;
+	}
+	
+	#mapClose {
+		visibility: hidden; 
+		position:absolute; 
+		top:50%; 
+		left:50%; 
+		margin-top:-211px; 
+		margin-left:201px; 
+		width:10px; 
+		height:10px;
+		z-index: 0;
+		cursor: pointer;
+	}
+		
+	#chat {
+		vertical-align: top;
+	}
+	
+	#chat textarea {
+		width: 200px;
+		height: 75px;
+		background-color: #fff;
+		margin: 0 auto;
+		resize: none;
+	}
+	
+	#chatUserName {
+		font-style: italic;
+		color: #333;
+	}
+  
+  	#chatButton {
+		width: 82px;
+		font-size: small;
+		border: solid 1px #444;
+		background-color: #fff;
+		color: #000;
+		cursor: pointer;
+  	}
+  
+  	#newSmell {
+		visibility: hidden;
+		display: inline;
+		position: relative;
+		bottom: 20;
+		right: 3;
+		float: right;
+		padding: 5px;
+		height: 20px;
+		width: 150px;
+		text-align: center;
+		cursor: pointer;
+	}
+  	
+  	#sniffs {
+  		position: relative;
+  		top: 10px;
+  	}
+  
+	div.sniff {
+		clear: both;
+		border: solid 1px #444;
+		-moz-border-radius: 15px;
+		-webkit-border-radius: 15px;
+		padding: 10px;
+		width: 750px;
+		background: #f0c859;
+		margin-bottom: 5px;
+	}
+	
+	#pfoteImg {
+		position: absolute;
+		top: 95px;
+		left: -7px;
+		z-index: 0;
+	}
+
+	span.name, span.zeit, span.entfernung, span.location, span.hidden {
+		position: absolute;
+		font-weight: bold;
+	}
+
+	span.name { 
+		font-size: 1.1em;
+		padding-left: 20px;
+	}
+
+	span.zeit {
+		left: 650px;
+	}
+	
+	span.location {
+		left: 150px;
+	}
+
+	span.entfernung {
+		left: 650px;
+	}
+
+	span.nachricht {
+		position: relative;
+	}
+	
+	span.hidden {
+		left: 650px;
+		visibility: hidden;
+		cursor: pointer;
+	}
+	
+	div.sniff:hover span.hidden{
+		visibility: visible;
+	}
+	
+	#moreSniffs {
+		visibility: hidden;
+		display: inline;
+		position: relative;
+		top: 22;
+		left: 350;
+		padding: 5px;
+		height: 20px;
+		width: 100px;
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	a:link, a:visited, a:hover, a:active { 
+		color: #000000;
+	}
+	
+	#printContainer {
+		visibility: hidden;
+	}
+}
+
+@media print {
+	body {
+		background-color: #FFF;
+		font-family: Calibri;
+		font-size: 13px;
+		text-align: center;
+	}
+	
+	#print {
+		position: absolute;
+		text-align: right;
+		cursor: pointer;
+	}
+
+	#container {
+		width: 800px;
+		margin: 0px auto;
+	}
+
+	#status,
+	#container,
+	#mapCanvas,
+	#userOnlineCanvas,
+	#print {
+		display: none;
+	}
+	
+	#printContainer {
+		display: block;
+	}
+	
+	#printSniffs {
+		padding-left: 50px;
+	}
+	
+	div.printSniff {
+		text-align: Left;
+		border-left: 2px dashed #444;
+		border-bottom: 1px dotted #444;
+	}
+}

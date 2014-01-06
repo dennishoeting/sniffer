@@ -1,0 +1,46 @@
+@media all {
+	body {
+		background-color: #FFF;
+		font-family: Calibri;
+		font-size: 13px;
+		text-align: center;
+	}
+	
+	#print {
+		position: absolute;
+		text-align: right;
+		cursor: pointer;
+	}
+
+	#container {
+		width: 800px;
+		margin: 0px auto;
+	}
+
+	#status,
+	#container,
+	#mapCanvas,
+	#userOnlineCanvas {
+		display: none;
+	}
+	
+	#printContainer {
+		display: block;
+	}
+	
+	#printSniffs {
+		padding-left: 50px;
+	}
+	
+	div.printSniff {
+		text-align: Left;
+		border-left: 2px dashed #444;
+		border-bottom: 1px dotted #444;
+	}
+}
+
+@media print {
+	#print {
+		display: none;
+	}
+}
